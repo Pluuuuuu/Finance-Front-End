@@ -1,27 +1,17 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import HomePage from './components/HomePage'; // Adjust paths if necessary
-import ExpensesPage from './components/ExpensesPage'; // Adjust paths if necessary
-import './App.css'; // Your CSS file
+import React, { useState } from "react";
+import ExpenseList from "./Pages/ExpenseList";
+import ExpenseForm from "./Pages/ExpenseForm";
 
-const App = () => {
+function App() {
+    const [updateTrigger, setUpdateTrigger] = useState(false);
+
     return (
-        <Router>
-            <div className="App">
-                <h1>Company Financial Tracker</h1>
-                <nav>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/expenses">Expenses</Link></li>
-                    </ul>
-                </nav>
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/expenses" element={<ExpensesPage />} />
-                </Routes>
-            </div>
-        </Router>
+        <div>
+            <h1>Finance Tracker</h1>
+            <ExpenseForm onExpenseAdded={() => setUpdateTrigger(!updateTrigger)} />
+            <ExpenseList key={updateTrigger} />
+        </div>
     );
-};
+}
 
 export default App;

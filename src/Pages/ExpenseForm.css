@@ -1,0 +1,11 @@
+.expense-form {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.expense-form input {
+    margin: 5px 0;
+    padding: 8px;
+}
