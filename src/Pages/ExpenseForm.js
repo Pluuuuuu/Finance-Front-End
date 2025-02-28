@@ -4,18 +4,17 @@ import "./ExpenseForm.css";
 
 const ExpenseForm = ({ onExpenseAdded }) => {
     const [formData, setFormData] = useState({
-        title: "",
-        description: "",
+        date: "",
+        category: "",
         amount: "",
-        currency: "USD",  // Default currency
-        date_time: "",
-        category_id: "",
+        title: "",
+        message: "",
     });
 
     const [categories, setCategories] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:5000/categories")
+        axios.get("http://localhost:5000/api/categories")
             .then(res => setCategories(res.data))
             .catch(err => console.error("Error fetching categories:", err));
     }, []);
@@ -28,61 +27,39 @@ const ExpenseForm = ({ onExpenseAdded }) => {
         e.preventDefault();
 
         const currentDate = new Date();
-        const entryDate = new Date(formData.date_time);
+        const entryDate = new Date(formData.date);
 
         if (entryDate > currentDate) {
             alert("Date cannot be in the future.");
             return;
         }
 
-        if (!formData.category_id) {
+        if (!formData.category) {
             alert("Please select a category.");
             return;
         }
 
-        axios.post("http://localhost:5000/expenses", formData)
+        axios.post("http://localhost:5000/api/expenses", formData)
             .then(() => {
                 alert("Expense added!");
                 onExpenseAdded();
             })
-            .catch(() => alert("Error adding expense"));
+            .catch(err => alert("Error adding expense: " + err.message));
     };
 
     return (
         <form className="expense-form" onSubmit={handleSubmit}>
-            <input type="text" name="title" placeholder="Title" required onChange={handleChange} />
-            <input type="text" name="description" placeholder="Description" required onChange={handleChange} />
+            <label>Date</label>
+            <input type="date" name="date" value={formData.date} onChange={handleChange} required />
 
-            {/* Amount input with currency dropdown */}
-            <div className="amount-input">
-                <input 
-                    type="number" 
-                    name="amount" 
-                    placeholder="Amount" 
-                    required 
-                    onChange={handleChange} 
-                />
-                <select 
-                    name="currency" 
-                    value={formData.currency} 
-                    onChange={handleChange} 
-                    required
-                >
-                    <option value="USD">USD</option>
-                    <option value="LBP">LBP</option>
-                </select>
-            </div>
-
-            <input type="datetime-local" name="date_time" required onChange={handleChange} />
-
-            {/* Category dropdown */}
+            <label>Category</label>
             <select
-                name="category_id"
-                value={formData.category_id}
+                name="category"
+                value={formData.category}
                 onChange={handleChange}
                 required
             >
-                <option value="">Select Category</option>
+                <option value="">Select the category</option>
                 {categories.map((category) => (
                     <option key={category.id} value={category.id}>
                         {category.name}
@@ -90,7 +67,16 @@ const ExpenseForm = ({ onExpenseAdded }) => {
                 ))}
             </select>
 
-            <button type="submit">Add Expense</button>
+            <label>Amount</label>
+            <input type="number" name="amount" value={formData.amount} onChange={handleChange} required />
+
+            <label>Expense Title</label>
+            <input type="text" name="title" value={formData.title} onChange={handleChange} required />
+
+            <label>Enter Message</label>
+            <textarea name="message" value={formData.message} onChange={handleChange}></textarea>
+
+            <button type="submit">Save</button>
         </form>
     );
 };

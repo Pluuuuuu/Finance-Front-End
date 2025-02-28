@@ -1,0 +1,30 @@
+.navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.nav-item {
+    text-align: center;
+    color: #555;
+    text-decoration: none;
+}
+
+.nav-item i {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.nav-item span {
+    display: block;
+    font-size: 12px;
+}
+
+.nav-item:hover {
+    color: #000;
+}

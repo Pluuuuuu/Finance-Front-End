@@ -1,11 +1,36 @@
 .expense-form {
-    max-width: 400px;
-    margin: auto;
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    background-color: #f0f8f5;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.expense-form input {
-    margin: 5px 0;
-    padding: 8px;
+.expense-form label {
+    font-size: 16px;
+    color: #333;
+}
+
+.expense-form input,
+.expense-form select,
+.expense-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.expense-form button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.expense-form button:hover {
+    background-color: #45a049;
 }
