@@ -1,0 +1,71 @@
+/* General container styling */
+.add-expense-container {
+    background-color: #eaf6ea;
+    border-radius: 25px;
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header */
+.add-expense-header {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #1f4d30;
+    margin-bottom: 15px;
+}
+
+/* Form elements */
+.add-expense-form label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.add-expense-form input,
+.add-expense-form select,
+.add-expense-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f0fff0;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.add-expense-form input:focus,
+.add-expense-form select:focus,
+.add-expense-form textarea:focus {
+    outline: none;
+    border-color: #4caf50;
+}
+
+/* Button */
+.add-expense-submit {
+    width: 100%;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-expense-submit:hover {
+    background-color: #388e3c;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .add-expense-container {
+        padding: 15px;
+    }
+}
