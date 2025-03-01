@@ -11,7 +11,18 @@ const ExpenseForm = ({ onExpenseAdded }) => {
         message: "",
     });
 
+    
     const [categories, setCategories] = useState([]);
+
+
+
+    // Predefined categories
+    /*const categories = [
+        { id: "fixed", name: "Fixed Expense" },
+        { id: "recurring", name: "Recurring Expense" }
+    ];*/
+
+
 
     useEffect(() => {
         axios.get("http://localhost:5000/api/categories")
