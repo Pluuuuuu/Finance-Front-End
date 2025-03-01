@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+.summary, .recent-activities, .chart {
+    background-color: #E4F2E4;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.summary h2, .recent-activities h2, .chart h2 {
+    margin-bottom: 10px;
+}
+
+.balance, .expense {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.progress-bar div {
+    height: 30px;
+    width: 30%;
+    background-color: #4caf50;
+    text-align: right;
+    padding-right: 10px;
+    line-height: 30px;
+    color: white;
+}
+
+.message {
+    font-size: 18px;
+}
+
+.recent-activities ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.recent-activities li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.recent-activities li:last-child {
+    border-bottom: none;
+}
+
+.chart {
+    width: 70%; /* Adjust the width for a user-friendly size */
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #E4F2E4;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.chart canvas {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+}
