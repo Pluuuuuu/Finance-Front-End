@@ -1,3 +1,5 @@
+/* ExpenseList.css */
+
 .expenses-container {
     max-width: 800px;
     margin: auto;
@@ -7,6 +9,7 @@
 table {
     width: 100%;
     border-collapse: collapse;
+    background-color: #E4F2E4; /* Updated color for the entire table */
 }
 
 th, td {
@@ -15,5 +18,13 @@ th, td {
 }
 
 th {
-    background-color: #f4f4f4;
+    background-color: #CDEACE; /* Slightly darker shade for the table header */
+}
+
+tr:nth-child(even) {
+    background-color: #E4F2E4; /* Ensure alternate rows match the table background */
+}
+
+tr:hover {
+    background-color: #CDEACE; /* Slightly darker shade for hover effect */
 }

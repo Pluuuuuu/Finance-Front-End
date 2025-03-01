@@ -1,36 +1,36 @@
+/* ExpenseForm.css */
+
 .expense-form {
+    max-width: 400px;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    background-color: #f0f8f5;
-    padding: 20px;
-    border-radius: 10px;
 }
 
-.expense-form label {
-    font-size: 16px;
-    color: #333;
+.expense-form input,
+.expense-form select,
+.expense-form textarea,
+.expense-form button {
+    margin: 5px 0;
+    padding: 8px;
 }
 
 .expense-form input,
 .expense-form select,
 .expense-form textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    background-color: #E4F2E4; /* Updated color */
 }
 
 .expense-form button {
-    padding: 10px;
-    background-color: #4caf50;
+    background-color: #04D99D; /* Updated color to match navbar */
     color: white;
     border: none;
+    padding: 10px;
     border-radius: 5px;
-    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .expense-form button:hover {
-    background-color: #45a049;
+    background-color: #028c6a; /* Slightly darker shade for hover effect */
 }
