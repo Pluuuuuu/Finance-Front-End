@@ -10,23 +10,15 @@ const ExpenseForm = ({ onExpenseAdded }) => {
         title: "",
         message: "",
     });
-
     
     const [categories, setCategories] = useState([]);
 
-
-
-    // Predefined categories
-    /*const categories = [
-        { id: "fixed", name: "Fixed Expense" },
-        { id: "recurring", name: "Recurring Expense" }
-    ];*/
-
-
-
     useEffect(() => {
         axios.get("http://localhost:5000/api/categories")
-            .then(res => setCategories(res.data))
+            .then(res => {
+                console.log("Categories fetched:", res.data); // Debugging: log the fetched categories
+                setCategories(res.data);
+            })
             .catch(err => console.error("Error fetching categories:", err));
     }, []);
 
@@ -54,6 +46,14 @@ const ExpenseForm = ({ onExpenseAdded }) => {
             .then(() => {
                 alert("Expense added!");
                 onExpenseAdded();
+                // Reset form data
+                setFormData({
+                    date: "",
+                    category: "",
+                    amount: "",
+                    title: "",
+                    message: "",
+                });
             })
             .catch(err => alert("Error adding expense: " + err.message));
     };
@@ -71,11 +71,15 @@ const ExpenseForm = ({ onExpenseAdded }) => {
                 required
             >
                 <option value="">Select the category</option>
-                {categories.map((category) => (
-                    <option key={category.id} value={category.id}>
-                        {category.name}
-                    </option>
-                ))}
+                {categories.length > 0 ? (
+                    categories.map((category) => (
+                        <option key={category.id} value={category.id}>
+                            {category.name}
+                        </option>
+                    ))
+                ) : (
+                    <option value="" disabled>No categories available</option>
+                )}
             </select>
 
             <label>Amount</label>
