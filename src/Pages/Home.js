@@ -17,6 +17,7 @@ const Home = () => {
             },
         ],
     });
+    const [totalExpenses, setTotalExpenses] = useState(0); // Add state for total expenses
 
     const chartRef = useRef(null); // Create a ref for the chart
 
@@ -24,6 +25,7 @@ const Home = () => {
         fetchSummary();
         fetchRecentActivities();
         fetchChartData();
+        fetchTotalExpenses(); // Fetch total expenses
     }, []);
 
     const fetchSummary = async () => {
@@ -86,14 +88,27 @@ const Home = () => {
         }
     };
 
+    const fetchTotalExpenses = async () => {
+        try {
+            const response = await axios.get('http://localhost:5000/api/total-expenses');
+            setTotalExpenses(response.data.totalExpenses);
+        } catch (error) {
+            console.error('Error fetching total expenses:', error);
+        }
+    };
+
+    const handleExpenseAdded = () => {
+        fetchTotalExpenses(); // Refresh the total expenses when a new expense is added
+    };
+
     return (
         <div>
-            
             <div className="summary">
                 <h2>Summary</h2>
                 <p>Total Income: ${summary.totalIncome}</p>
                 <p>Total Expenses: ${summary.totalExpenses}</p>
                 <p>Net Profit: ${summary.netProfit}</p>
+                <h2>Total Expenses: ${totalExpenses.toFixed(2)}</h2> {/* Display total expenses */}
             </div>
             <div className="recent-activities">
                 <h2>Recent Activities</h2>
