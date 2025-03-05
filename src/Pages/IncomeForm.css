@@ -1,0 +1,36 @@
+/* IncomeForm.css */
+
+.income-form {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.income-form input,
+.income-form select,
+.income-form textarea,
+.income-form button {
+    margin: 5px 0;
+    padding: 8px;
+}
+
+.income-form input,
+.income-form select,
+.income-form textarea {
+    background-color: #E4F2E4; /* Updated color */
+}
+
+.income-form button {
+    background-color: #04D99D; /* Updated color to match navbar */
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.income-form button:hover {
+    background-color: #028c6a; /* Slightly darker shade for hover effect */
+}
