@@ -6,6 +6,8 @@ import ExpenseForm from "./Pages/ExpenseForm";
 import Home from "./Pages/Home";
 import Income from "./Pages/Income";
 import Analysis from "./Pages/Analysis";
+import LoginSignup from "./Pages/LoginSignup";
+
 
 function App() {
     const [updateTrigger, setUpdateTrigger] = useState(false);
