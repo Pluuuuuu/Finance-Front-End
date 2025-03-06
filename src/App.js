@@ -6,7 +6,7 @@ import ExpenseForm from "./Pages/ExpenseForm";
 import Home from "./Pages/Home";
 import Income from "./Pages/Income";
 import Analysis from "./Pages/Analysis";
-import LoginSignup from "./Pages/LoginSignup";
+//import LoginSignup from "./Pages/LoginSignup";
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
         <Router>
             <Navbar />
             <div>
-                <h1>Finance Tracker</h1>
+                <h1>Hi,Welcome back</h1>
                 <Routes>
                     <Route exact path="/" element={<Home />} />
                     <Route path="/income" element={<Income />} />

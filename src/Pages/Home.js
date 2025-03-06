@@ -22,20 +22,20 @@ const Home = () => {
     const chartRef = useRef(null); // Create a ref for the chart
 
     useEffect(() => {
-        fetchSummary();
+        //fetchSummary();
         fetchRecentActivities();
         fetchChartData();
         fetchTotalExpenses(); // Fetch total expenses
     }, []);
 
-    const fetchSummary = async () => {
+    /*const fetchSummary = async () => {
         try {
             const response = await axios.get('http://localhost:5000/api/summary');
             setSummary(response.data);
         } catch (error) {
             console.error('Error fetching summary:', error);
         }
-    };
+    };*/
 
     const fetchRecentActivities = async () => {
         try {
@@ -96,6 +96,12 @@ const Home = () => {
             console.error('Error fetching total expenses:', error);
         }
     };
+
+    //to add here fetch total income
+
+
+
+    //to add here total profit
 
     const handleExpenseAdded = () => {
         fetchTotalExpenses(); // Refresh the total expenses when a new expense is added
