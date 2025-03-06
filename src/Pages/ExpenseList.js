@@ -34,6 +34,7 @@ const ExpenseList = () => {
         const date = prompt("Enter new date:");
 
         try {
+            console.log(`Editing expense with ID: ${id}`); // Debugging: log the ID
             await axios.put(`http://localhost:5000/api/expenses/${id}`, { title, description, amount, date });
             fetchExpenses();
         } catch (error) {
