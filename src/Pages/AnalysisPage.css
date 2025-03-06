@@ -1,0 +1,25 @@
+.analysis-page {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .period-buttons button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .period-buttons button:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .bar-chart {
+    margin: 20px 0;
+  }
+  
+  .totals {
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  

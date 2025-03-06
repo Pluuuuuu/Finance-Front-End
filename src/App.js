@@ -6,7 +6,7 @@ import ExpenseForm from "./Pages/ExpenseForm";
 import Home from "./Pages/Home";
 import IncomeList from "./Pages/incomelist";
 import IncomeForm from "./Pages/IncomeForm";
-import Analysis from "./Pages/Analysis";
+import AnalysisPage from './Pages/AnalysisPage';
 
 function App() {
     const [updateTrigger, setUpdateTrigger] = useState(false);
@@ -31,7 +31,9 @@ function App() {
                             <ExpenseList key={updateTrigger} />
                         </>
                     } />
-                    <Route path="/analysis" element={<Analysis />} />
+                        <div className="App">
+                            <AnalysisPage />
+                        </div>
                 </Routes>
             </div>
         </Router>
