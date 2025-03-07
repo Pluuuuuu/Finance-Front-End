@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 import './Home.css'; // Import the updated CSS
+import HeroImage from '../Assets/businessmen-hands-white-table-with-documents-drafts.jpg'; // Adjusted path for the hero image
 
 const Home = () => {
     const [summary, setSummary] = useState({ totalIncome: 0, totalExpenses: 0, netProfit: 0 });
@@ -17,25 +18,15 @@ const Home = () => {
             },
         ],
     });
-    const [totalExpenses, setTotalExpenses] = useState(0); // Add state for total expenses
+    const [totalExpenses, setTotalExpenses] = useState(0);
 
     const chartRef = useRef(null); // Create a ref for the chart
 
     useEffect(() => {
-        //fetchSummary();
         fetchRecentActivities();
         fetchChartData();
-        fetchTotalExpenses(); // Fetch total expenses
+        fetchTotalExpenses();
     }, []);
-
-    /*const fetchSummary = async () => {
-        try {
-            const response = await axios.get('http://localhost:5000/api/summary');
-            setSummary(response.data);
-        } catch (error) {
-            console.error('Error fetching summary:', error);
-        }
-    };*/
 
     const fetchRecentActivities = async () => {
         try {
@@ -97,36 +88,42 @@ const Home = () => {
         }
     };
 
-    //to add here fetch total income
-
-
-
-    //to add here total profit
-
     const handleExpenseAdded = () => {
         fetchTotalExpenses(); // Refresh the total expenses when a new expense is added
     };
 
     return (
         <div>
+            {/* Hero Image Section */}
+            <div className="hero-image">
+                <img
+                    src={HeroImage}
+                    alt="Businessmen hands on white table with documents"
+                    className="hero-img"
+                />
+            </div>
+            {/* Content Section */}
             <div className="summary">
                 <h2>Summary</h2>
                 <p>Total Income: ${summary.totalIncome}</p>
                 <p>Total Expenses: ${summary.totalExpenses}</p>
                 <p>Net Profit: ${summary.netProfit}</p>
-                <h2>Total Expenses: ${totalExpenses.toFixed(2)}</h2> {/* Display total expenses */}
+                <h2>Total Expenses: ${totalExpenses.toFixed(2)}</h2>
             </div>
             <div className="recent-activities">
                 <h2>Recent Activities</h2>
                 <ul>
                     {recentActivities.map(activity => (
-                        <li key={activity.id}>{activity.title}: ${activity.amount} on {new Date(activity.date).toLocaleDateString()}</li>
+                        <li key={activity.id}>
+                            {activity.title}: ${activity.amount} on{' '}
+                            {new Date(activity.date).toLocaleDateString()}
+                        </li>
                     ))}
                 </ul>
             </div>
             <div className="chart">
                 <h2>Income and Expenses Chart</h2>
-                <canvas id="myChart" /> {/* Use a canvas element with an ID */}
+                <canvas id="myChart" />
             </div>
         </div>
     );
