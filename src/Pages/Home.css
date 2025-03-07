@@ -80,3 +80,16 @@ body {
     width: 100%;
     height: auto; /* Maintain aspect ratio */
 }
+.hero-image {
+    width: 100%;
+    height: 300px; /* Adjust the height as needed */
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    display: block;
+}
