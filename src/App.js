@@ -7,6 +7,8 @@ import Home from "./Pages/Home";
 import IncomeList from "./Pages/incomelist";
 import IncomeForm from "./Pages/IncomeForm";
 import Analysis from "./Pages/Analysis";
+//import LoginSignup from "./Pages/LoginSignup";
+
 
 function App() {
     const [updateTrigger, setUpdateTrigger] = useState(false);
@@ -15,7 +17,7 @@ function App() {
         <Router>
             <Navbar />
             <div>
-                <h1>Finance Tracker</h1>
+                <h1>Hi,Welcome back</h1>
                 <Routes>
                     <Route exact path="/" element={<Home />} />
                     <Route path="/income" element={
