@@ -1,5 +1,4 @@
-/* ExpenseForm.css */
-
+/* ExpenseForm Styles */
 .expense-form {
     max-width: 400px;
     margin: auto;
@@ -7,30 +6,56 @@
     flex-direction: column;
 }
 
+/* Apply styling to all inputs, selects, textareas, and button */
 .expense-form input,
 .expense-form select,
 .expense-form textarea,
 .expense-form button {
     margin: 5px 0;
     padding: 8px;
+    border-radius: 5px; /* Ensure all elements have border-radius */
+    border: 1px solid #ddd; /* Border to match styling */
 }
 
+/* Apply background color to inputs, selects, and textareas */
 .expense-form input,
 .expense-form select,
 .expense-form textarea {
     background-color: #E4F2E4; /* Updated color */
 }
 
+/* Apply background and hover effect to the button */
 .expense-form button {
     background-color: #04D99D; /* Updated color to match navbar */
     color: white;
     border: none;
     padding: 10px;
-    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .expense-form button:hover {
     background-color: #028c6a; /* Slightly darker shade for hover effect */
+}
+
+/* Add styling for the amount input and currency symbol */
+.amount-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensure that input and currency sign are on opposite ends */
+}
+
+.amount-input input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px; /* Consistent border radius */
+    border: 1px solid #ddd;
+    margin: 5px 0;
+}
+
+.currency-sign {
+    margin-left: 15px; /* Increased the space between input and the USD label */
+    font-size: 16px; /* Size of the currency symbol */
+    color: #333; /* Adjust the color if needed */
 }
