@@ -33,19 +33,25 @@ const ExpenseList = () => {
 
     const handleEdit = async (id) => {
         const title = prompt("Enter new title:");
-        const description = prompt("Enter new description:");
+        const message = prompt("Enter new message:");
         const amount = prompt("Enter new amount:");
         const date = prompt("Enter new date:");
     
-        if (!title || !description || !amount || !date) {
+        if (!title || !message || !amount || !date) {
             alert("All fields are required to update an expense.");
             return;
         }
     
         try {
             console.log(`Editing expense with ID: ${id}`);
-            await axios.put(`http://localhost:5000/api/expenses/${id}`, { title, description, amount, date });
+            await axios.put(`http://localhost:5000/api/expenses/${id}`, { title, message, amount, date });
             fetchExpenses(); // Refresh the expense list
+             // ✅ Instead of refetching, update state manually
+            /*setExpenses((prevExpenses) =>
+            prevExpenses.map((expense) =>
+                expense.id === id ? { ...expense, title, message, amount, date } : expense
+            )
+        );*/
         } catch (error) {
             console.error("Error editing expense:", error);
         }
@@ -58,7 +64,7 @@ const ExpenseList = () => {
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Description</th>
+                        <th>Message</th>
                         <th>Amount</th>
                         <th>Date</th>
                         <th>Actions</th>
@@ -69,7 +75,7 @@ const ExpenseList = () => {
                         expenses.map(expense => (
                             <tr key={expense.id}>
                                 <td>{expense.title}</td>
-                                <td>{expense.description}</td>
+                                <td>{expense.message}</td>
                                 <td>{expense.amount}</td>
                                 <td>{new Date(expense.date).toLocaleDateString()}</td>
                                 <td>
