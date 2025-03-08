@@ -17,14 +17,20 @@ const ExpenseList = () => {
             console.error("Error fetching expenses:", error);
         }
     };
-
+ 
     const handleDelete = async (id) => {
         const confirmation = window.confirm("Are you sure you want to delete this expense?");
         if (!confirmation) return;
     
         try {
-            await axios.delete(`http://localhost:5000/api/expenses/${id}`);
-            fetchExpenses(); // Refresh the expense list
+            const response = await axios.delete(`http://localhost:5000/api/expenses/${id}`);
+    
+            console.log("Delete response:", response.data); // Debugging
+    
+            // Remove the deleted expense from the UI without re-fetching everything
+            setExpenses((prevExpenses) => prevExpenses.filter(expense => expense.id !== id));
+    
+            alert("Expense deleted successfully.");
         } catch (error) {
             console.error("Error deleting expense:", error);
             alert("Failed to delete the expense. Please try again.");

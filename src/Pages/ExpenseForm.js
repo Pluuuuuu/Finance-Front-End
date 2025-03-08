@@ -41,11 +41,12 @@ const ExpenseForm = ({ onExpenseAdded }) => {
             alert("Please select a category.");
             return;
         }
-
+        console.log("Sending expense data:", formData); // 🔍 Debugging
         axios.post("http://localhost:5000/api/expenses", formData)
-            .then(() => {
+            .then((res) => {
+                console.log("Response from server:", res.data); // 🔍 Debugging
                 alert("Expense added!");
-                onExpenseAdded();
+                onExpenseAdded();// Make sure this is correctly triggering a refresh
                 // Reset form data
                 setFormData({
                     date: "",
