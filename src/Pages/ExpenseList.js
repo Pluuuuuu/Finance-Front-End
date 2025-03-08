@@ -17,6 +17,9 @@ const ExpenseList = () => {
             console.error("Error fetching expenses:", error);
         }
     };
+    useEffect(() => {
+        fetchExpenses();
+    }, []);
  
     const handleDelete = async (id) => {
         const confirmation = window.confirm("Are you sure you want to delete this expense?");
