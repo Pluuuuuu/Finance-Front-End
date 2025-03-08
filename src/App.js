@@ -31,9 +31,9 @@ function App() {
                             <ExpenseList key={updateTrigger} />
                         </>
                     } />
-                        <div className="App">
+                       <div className="App">
                             <AnalysisPage />
-                        </div>
+                        </div> 
                 </Routes>
             </div>
         </Router>
