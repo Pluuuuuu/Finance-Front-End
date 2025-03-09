@@ -84,7 +84,17 @@ const IncomeForm = ({ onIncomeAdded }) => {
             </select>
 
             <label>Amount</label>
-            <input type="number" name="amount" value={formData.amount} onChange={handleChange} required />
+            <div className="amount-input">
+                
+                <input
+                    type="number"
+                    name="amount"
+                    value={formData.amount}
+                    onChange={handleChange}
+                    required
+                />
+                <span className="currency-sign">USD</span>
+            </div>
 
             <label>Income Title</label>
             <input type="text" name="title" value={formData.title} onChange={handleChange} required />
