@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-//import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from "recharts";
 import { Card, CardContent } from "@mui/material";
-
 import { Typography, Button, ButtonGroup } from "@mui/material";
 import YearlyChart from "./YearlyChart";
+import MonthlyChart from "./MonthlyChart";
+import DailyChart from "./DailyChart";
+import WeeklyChart from "./WeeklyChart";
 
 const dailyData = [
   { date: "Monday", income: 4000, expenses: 2400 },
@@ -37,15 +38,34 @@ const yearlyData = [
 ];
 
 const Analysis = () => {
-  const [selectedData, setSelectedData] = useState(dailyData);
+  // State to track which chart is selected
+  const [selectedChart, setSelectedChart] = useState("daily");
+
+  // Handle button click to change chart type
+  const handleButtonClick = (chartType) => {
+    setSelectedChart(chartType);
+  };
 
   return (
     <Card className="p-4 shadow-lg">
       <CardContent>
         <Typography variant="h5" gutterBottom>
-           Analysis - Income vs Expenses
+          Analysis Page
         </Typography>
-        <YearlyChart/>
+
+        {/* Button Group */}
+        <ButtonGroup variant="contained" color="primary">
+          <Button onClick={() => handleButtonClick("daily")}>Daily</Button>
+          <Button onClick={() => handleButtonClick("weekly")}>Weekly</Button>
+          <Button onClick={() => handleButtonClick("monthly")}>Monthly</Button>
+          <Button onClick={() => handleButtonClick("yearly")}>Yearly</Button>
+        </ButtonGroup>
+
+        {/* Conditionally Render the Selected Chart */}
+        {selectedChart === "daily" && <DailyChart data={dailyData} />}
+        {selectedChart === "weekly" && <WeeklyChart data={weeklyData} />}
+        {selectedChart === "monthly" && <MonthlyChart data={monthlyData} />}
+        {selectedChart === "yearly" && <YearlyChart data={yearlyData} />}
       </CardContent>
     </Card>
   );
