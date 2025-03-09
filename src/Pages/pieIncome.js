@@ -1,85 +1,48 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import Slider from '@mui/material/Slider';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import { PieChart } from '@mui/x-charts/PieChart';
 
-// Sample Data for Pie Chart (You can adjust this data as needed)
-const sampleData = [
-  { label: 'Income', value: 60 },
-  { label: 'Expenses', value: 40 }
-];
+export default function PieIncome() {
+  // Random values for demonstration
+  const totalGoal = Math.floor(Math.random() * 10000) + 4500; // Random goal between 5k and 15k
+  const currentProgress = Math.floor((Math.random() * 100) + 1); // Random progress percentage between 1 and 100
+  const currentIncome = (totalGoal * currentProgress) / 100; // Current income based on progress
+  const remainingIncome = totalGoal - currentIncome; // Calculate remaining income
 
-const valueFormatter = (value) => `${value}%`;
-
-const PieIncome = () => {
-  const [radius, setRadius] = React.useState(50);
-  const [itemNb, setItemNb] = React.useState(2); // Adjusted to fit sample data
-  const [skipAnimation, setSkipAnimation] = React.useState(false);
-
-  const handleItemNbChange = (event, newValue) => {
-    if (typeof newValue !== 'number') {
-      return;
-    }
-    setItemNb(newValue);
-  };
-
-  const handleRadius = (event, newValue) => {
-    if (typeof newValue !== 'number') {
-      return;
-    }
-    setRadius(newValue);
-  };
+  // Data for the single pie chart (current income and remaining income)
+  const pieData = [
+    { id: 'current-income', label: 'Current Income', value: currentIncome, color: '#2E97F2' }, // Green color
+    { id: 'remaining-income', label: 'Remaining Income', value: remainingIncome, color: '#03A696' }, // Light green color
+  ];
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <PieChart
-        height={300}
-        series={[
-          {
-            data: sampleData.slice(0, itemNb),  // Using the sample data
-            innerRadius: radius,
-            arcLabel: (params) => params.label ?? '',
-            arcLabelMinAngle: 20,
-            valueFormatter,
-          },
-        ]}
-        skipAnimation={skipAnimation}
-      />
-      <FormControlLabel
-        checked={skipAnimation}
-        control={
-          <Checkbox onChange={(event) => setSkipAnimation(event.target.checked)} />
-        }
-        label="skipAnimation"
-        labelPlacement="end"
-      />
-      <Typography id="input-item-number" gutterBottom>
-        Number of items
+    <Box textAlign="center" width="100%">
+      <Typography variant="h6" gutterBottom>
+        Income Goal Progress
       </Typography>
-      <Slider
-        value={itemNb}
-        onChange={handleItemNbChange}
-        valueLabelDisplay="auto"
-        min={1}
-        max={8}
-        aria-labelledby="input-item-number"
-      />
-      <Typography id="input-radius" gutterBottom>
-        Radius
-      </Typography>
-      <Slider
-        value={radius}
-        onChange={handleRadius}
-        valueLabelDisplay="auto"
-        min={15}
-        max={100}
-        aria-labelledby="input-radius"
-      />
+
+      <Box mb={3}>
+        <PieChart
+          series={[
+            {
+              data: pieData, // Directly passing the pie data without unnecessary nesting
+              innerRadius: 50, // You can adjust the inner radius to make it look like a donut chart
+              arcLabel: (params) => `${params.label}: $${params.value.toFixed(2)}`, // Label with value formatted as currency
+            },
+          ]}
+          height={300}
+        />
+      </Box>
+
+      <Box>
+        <Typography variant="body1">
+          <strong>Goal:</strong> ${totalGoal} (Total Income Goal)
+        </Typography>
+        <Typography variant="body1">
+          <strong>Current Progress:</strong> ${currentIncome.toFixed(2)} ({currentProgress}%)
+        </Typography>
+      </Box>
     </Box>
   );
-};
-
-export default PieIncome;
+}

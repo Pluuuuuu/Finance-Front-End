@@ -6,15 +6,15 @@
   }
   
   .chart-button {
-    border: 2px solid #4caf50 !important; /* Green border */
-    background-color: #4caf50 !important; 
+    border: 2px solid #03A696 !important; /* Green border */
+    background-color: #03A696 !important; 
     color: white !important;
     transition: all 0.3s ease !important;
   }
   
   /* Hover effect for the buttons (yellow) */
   .chart-button:hover {
-    background-color: #CDEACE !important;
+    background-color: #2E97F2 !important;
     color: black !important;
   }
   
@@ -33,7 +33,6 @@
     display: flex;
     justify-content: center;  /* Centers content horizontally */
     align-items: center;      /* Centers content vertically */
-    height: 100vh;            /* Full viewport height */
     margin: 0;
 }
 .title{
@@ -47,3 +46,30 @@
     justify-content: center;  /* Centers the button group horizontally */
     margin: 20px 0;           /* Optional: Adds space around the button group */
 }
+
+.pies {
+    display: flex;
+    justify-content: space-around; /* Distribute the items evenly */
+    align-items: flex-start; /* Align items at the start of the container */
+  }
+  
+  .pie-container {
+    width: 45%; /* Make sure each container is not too wide to avoid overlap */
+    display: flex;
+    flex-direction: column; /* Stack pie chart and details vertically */
+    align-items: center; /* Center align the pie chart and details */
+  }
+  
+  .pie-details {
+    margin-top: 20px; /* Space between pie chart and details */
+    text-align: center;
+  }
+  
+  .separator {
+    width: 100%; /* Full width */
+    height: 2px; /* You can adjust the height to your preference */
+    background-color: #03A696; /* Your desired separator color */
+    margin: 20px 0; /* Optional: Add space above and below the separator */
+    
+}
+  

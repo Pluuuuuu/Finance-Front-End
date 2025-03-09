@@ -6,6 +6,8 @@ import DailyChart from "./DailyChart";
 import WeeklyChart from "./WeeklyChart";  
 import "./Analysis.css"; // Import the CSS file
 import PieIncome from "./pieIncome";
+import PieCompare from "./PieCompare";
+import PieExpense from "./pieExpense.js";
 
 const Analysis = () => {
   const [selectedChart, setSelectedChart] = useState("daily");
@@ -17,8 +19,8 @@ const Analysis = () => {
   return (
     <Card className="analysis-container">
       <CardContent>
-        <Typography variant="h5" gutterBottom className="title">
-          Analysis - Income vs Expenses
+        <Typography variant="h2" gutterBottom className="title">
+          Analysis
         </Typography>
 
         {/* Button Group */}
@@ -56,7 +58,17 @@ const Analysis = () => {
         {selectedChart === "monthly" && <MonthlyChart />}
         {selectedChart === "yearly" && <YearlyChart />}
 
-        <PieIncome/>
+        <div className="separator"></div>
+
+        <Typography variant="h2" gutterBottom className="title">
+          Total View
+        </Typography>
+        <PieCompare/> 
+        <div className="pies">
+          <div className="p1"><PieIncome/></div>
+          <div className="p2"><PieExpense/></div>
+        </div>
+
       </CardContent>
     </Card>
   );
